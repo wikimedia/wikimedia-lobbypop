@@ -36,7 +36,7 @@ $sites = array(
 	// WikiSwarm for 00:01:23
 	array(
 		':url' => 'visualizations/video',
-		':time' => 120000,
+		':time' => 90000,
 		':weight' => 1,
 	),
 	// XKCD for 00:02:00
@@ -48,19 +48,19 @@ $sites = array(
 	// Anon-edits for 00:10:00
 	array(
 		':url' => 'http://www.lkozma.net/wpv',
-		':time' => 120000,
+		':time' => 360000,
 		':weight' => 1,
 	),
 	// Commons for 00:02:00
 	array(
 		':url' => 'http://toolserver.org/~para/Commons:Special:NewFiles',
-		':time' => 120000,
+		':time' => 360000,
 		':weight' => 1,
 	),
 	// Wikimedia Project Growth for 00:00:30
 	array(
 		':url' => 'visualizations/growth',
-		':time' => 120000,
+		':time' => 90000,
 		':weight' => 1,
 	),
 );
