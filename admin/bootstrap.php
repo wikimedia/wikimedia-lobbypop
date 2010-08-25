@@ -35,30 +35,35 @@ $actions = array(
 $sites = array(
 	// WikiSwarm for 00:01:23
 	array(
+		':name' => 'Video',
 		':url' => 'visualizations/video',
 		':time' => 90000,
 		':weight' => 1,
 	),
 	// XKCD for 00:02:00
 	array(
+		':name' => 'XKCD',
 		':url' => 'visualizations/xkcd',
 		':time' => 120000,
 		':weight' => 1,
 	),
 	// Anon-edits for 00:10:00
 	array(
+		':name' => 'WikipediaViz',
 		':url' => 'http://www.lkozma.net/wpv',
 		':time' => 360000,
 		':weight' => 1,
 	),
 	// Commons for 00:02:00
 	array(
+		':name' => 'Commons Files',
 		':url' => 'http://toolserver.org/~para/Commons:Special:NewFiles',
 		':time' => 360000,
 		':weight' => 1,
 	),
 	// Wikimedia Project Growth for 00:00:30
 	array(
+		':name' => 'Growth',
 		':url' => 'visualizations/growth',
 		':time' => 90000,
 		':weight' => 1,

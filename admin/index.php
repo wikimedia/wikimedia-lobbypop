@@ -12,15 +12,15 @@ if ( !file_exists( '../data/lobbypop.db' ) ) {
 	require_once( 'bootstrap.php' );
 	// Create and initialize database
 	$db = new PDO( 'sqlite:../data/lobbypop.db' );
-	$db->exec( 'CREATE TABLE IF NOT EXISTS sites ( url TEXT, time INT, weight INT, run BOOL DEFAULT 1, display TEXT DEFAULT "none" )' );
+	$db->exec( 'CREATE TABLE IF NOT EXISTS sites ( name TEXT, url TEXT, time INT, weight INT, run BOOL DEFAULT 1, display TEXT DEFAULT "none" )' );
 	$db->exec( 'CREATE TABLE IF NOT EXISTS actions ( text TEXT )' );
-	$stmt = $db->prepare( 'INSERT INTO actions (text) VALUES (:text)' );
+	$insert = $db->prepare( 'INSERT INTO actions (text) VALUES (:text)' );
 	foreach ( $actions as $action ) {
-		$stmt->execute( $action );
+		$insert->execute( $action );
 	}
-	$stmt = $db->prepare( 'INSERT INTO sites (url,time,weight) VALUES (:url,:time,:weight)' );
+	$insert = $db->prepare( 'INSERT INTO sites (name,url,time,weight) VALUES (:name,:url,:time,:weight)' );
 	foreach ( $sites as $site ) {
-		$stmt->execute( $site );
+		$insert->execute( $site );
 	}
 }
 // Automatically connect to the database
@@ -48,10 +48,16 @@ if ( isset( $_POST['action'] ) ) {
 	exit;
 }
 // Run queries
-$sites = $db->prepare( 'SELECT rowid,* FROM sites' );
-$sites->execute();
-$actions = $db->prepare( 'SELECT rowid,* FROM actions' );
-$actions->execute();
+$selectSites = $db->prepare( 'SELECT rowid,* FROM sites' );
+$selectSites->execute();
+$selectActions = $db->prepare( 'SELECT rowid,* FROM actions' );
+$selectActions->execute();
+$selectDisplay = $db->prepare( 'SELECT * FROM sites WHERE display=:display LIMIT 1' );
+$displays = array();
+foreach ( array( 'top-left', 'top-right', 'bottom-left', 'bottom-right' ) as $location ) {
+	$selectDisplay->execute( array( ':display' => $location ) );
+	$displays[$location] = $selectDisplay->fetch( PDO::FETCH_ASSOC );
+}
 ?>
 <!doctype html>
 <html>
@@ -70,32 +76,89 @@ $actions->execute();
 		</div>
 		<div id="tabs">
 			<ul>
+				<li><a href="#displays">Displays</a></li>
 				<li><a href="#sites">Sites</a></li>
 				<li><a href="#actions">Actions</a></li>
 			</ul>
+			<div id="displays" align="center">
+				<table>
+					<tbody>
+						<tr>
+							<td id="display-top-left" width="50%">
+								<?php if ( $displays['top-left'] ): ?>
+								<a href="<?php echo $displays['top-left']['url'] ?>" target="_blank">
+									<?php echo $displays['top-left']['name'] ?>
+								</a>
+								<?php else: ?>
+								<a href="#displays" class="blank">
+									<img src="images/loading.gif" border="0" align="absmiddle" />
+								</a>
+								<?php endif; ?>
+							</td>
+							<td id="display-top-right" width="50%">
+								<?php if ( $displays['top-right'] ): ?>
+								<a href="<?php echo $displays['top-right']['url'] ?>" target="_blank">
+									<?php echo $displays['top-right']['name'] ?>
+								</a>
+								<?php else: ?>
+								<a href="#displays" class="blank">
+									<img src="images/loading.gif" border="0" align="absmiddle" />
+								</a>
+								<?php endif; ?>
+							</td>
+						</tr>
+						<tr>
+							<td id="display-bottom-left" width="50%">
+								<?php if ( $displays['bottom-left'] ): ?>
+								<a href="<?php echo $displays['bottom-left']['url'] ?>" target="_blank">
+									<?php echo $displays['bottom-left']['name'] ?>
+								</a>
+								<?php else: ?>
+								<a href="#displays" class="blank">
+									<img src="images/loading.gif" border="0" align="absmiddle" />
+								</a>
+								<?php endif; ?>
+							</td>
+							<td id="display-bottom-right" width="50%">
+								<?php if ( $displays['bottom-right'] ): ?>
+								<a href="<?php echo $displays['bottom-right']['url'] ?>" target="_blank">
+									<?php echo $displays['bottom-right']['name'] ?>
+								</a>
+								<?php else: ?>
+								<a href="#displays" class="blank">
+									<img src="images/loading.gif" border="0" align="absmiddle" /> 
+								</a>
+								<?php endif; ?>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 			<div id="sites">
 				<table>
 					<thead>
 						<tr>
 							<th>Run</th>
+							<th>Name</th>
+							<th>URL</th>
 							<th>Display</th>
-							<th width="80%">URL</th>
 							<th class="numeric">Time</th>
 							<th class="numeric">Weight</th>
 						</tr>
 					</thead>
 					<tbody>
-						<?php while ( $site = $sites->fetch( PDO::FETCH_ASSOC ) ): ?>
+						<?php while ( $site = $selectSites->fetch( PDO::FETCH_ASSOC ) ): ?>
 						<tr>
 							<td>
 								<input type="checkbox" id="sites-run-<?php echo $site['rowid'] ?>"
 									rel="<?php echo $site['rowid'] ?>" <?php echo $site['run'] ? 'checked' : '' ?> />
 								<label for="sites-run-<?php echo $site['rowid'] ?>">Run</label>
 							</td>
-							<td><?php echo $site['display'] ?></td>
+							<td><?php echo $site['name'] ?></td>
 							<td>
 								<a href="<?php echo $site['url'] ?>" target="_blank"><?php echo $site['url'] ?></a>
 							</td>
+							<td><?php echo $site['display'] ?></td>
 							<td class="numeric"><?php echo $site['time'] / 60000 ?> min</td>
 							<td class="numeric"><?php echo $site['weight'] ?></td>
 						</tr>
@@ -109,7 +172,7 @@ $actions->execute();
 						<th>Text</th>
 					</thead>
 					<tbody>
-						<?php while ( $action = $actions->fetch( PDO::FETCH_ASSOC ) ): ?>
+						<?php while ( $action = $selectActions->fetch( PDO::FETCH_ASSOC ) ): ?>
 						<tr>
 							<td><?php echo $action['text'] ?></td>
 						</tr>

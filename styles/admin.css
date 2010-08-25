@@ -23,11 +23,35 @@ th.numeric, td.numeric {
 	top: 1em;
 	right: 1em;
 }
-input[type=checkbox].pending {
-	background-image: url(../images/loading.gif);
-	border: solid 1px red;
+#displays table {
+	width: 720px;
+	border: solid 1px #cccccc;
+	padding: 1em;
 }
-a[target=_blank] {
+#displays td {
+	padding: 1em;
+	text-align: center;
+	line-height: 4em;
+	font-size: 2em;
+}
+#displays td a {
+	display: block;
+	padding: 1em;
+	color: #000000;
+	border: solid 1px #cccccc;
+	background-color: #f3f3f3;
+	text-decoration: none;
+}
+#displays td a:hover {
+	color: #333333;
+	color: #003355;
+	border: solid 1px #ccddee;
+	background-color: #f3f5f7;
+}
+#displays td a.blank {
+	background-color: white;
+}
+#sites a[target=_blank] {
 	background-image: url(../images/external.png);
 	background-position: left center;
 	background-repeat: no-repeat;
