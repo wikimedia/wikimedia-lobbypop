@@ -48,55 +48,19 @@ $sites = array(
 	// Anon-edits for 00:10:00
 	array(
 		':url' => 'http://www.lkozma.net/wpv',
-		':time' => 30000,
+		':time' => 120000,
 		':weight' => 1,
 	),
 	// Commons for 00:02:00
 	array(
 		':url' => 'http://toolserver.org/~para/Commons:Special:NewFiles',
-		':time' => 30000,
+		':time' => 120000,
 		':weight' => 1,
 	),
-	// Wikipedia Growth for 00:00:30
+	// Wikimedia Project Growth for 00:00:30
 	array(
-		':url' => 'http://stats.wikimedia.org/wikimedia/animations/growth/AnimationProjectsGrowthWp.html?canvas_width=1800&canvas_height=1000',
-		':time' => 30000,
-		':weight' => 1,
-	),
-	// Wikibooks Growth for 00:00:30
-	array(
-		':url' => 'http://stats.wikimedia.org/wikimedia/animations/growth/AnimationProjectsGrowthWb.html?canvas_width=1800&canvas_height=1000',
-		':time' => 30000,
-		':weight' => 1,
-	),
-	// Wikinews Growth for 00:00:30
-	array(
-		':url' => 'http://stats.wikimedia.org/wikimedia/animations/growth/AnimationProjectsGrowthWn.html?canvas_width=1800&canvas_height=1000',
-		':time' => 30000,
-		':weight' => 1,
-	),
-	// Wikiquote Growth for 00:00:30
-	array(
-		':url' => 'http://stats.wikimedia.org/wikimedia/animations/growth/AnimationProjectsGrowthWq.html?canvas_width=1800&canvas_height=1000',
-		':time' => 30000,
-		':weight' => 1,
-	),
-	// Wikisource Growth for 00:00:30
-	array(
-		':url' => 'http://stats.wikimedia.org/wikimedia/animations/growth/AnimationProjectsGrowthWs.html?canvas_width=1800&canvas_height=1000',
-		':time' => 30000,
-		':weight' => 1,
-	),
-	// Wikiversity Growth for 00:00:30
-	array(
-		':url' => 'http://stats.wikimedia.org/wikimedia/animations/growth/AnimationProjectsGrowthWv.html?canvas_width=1800&canvas_height=1000',
-		':time' => 30000,
-		':weight' => 1,
-	),
-	// Wiktionary Growth for 00:00:30
-	array(
-		':url' => 'http://stats.wikimedia.org/wikimedia/animations/growth/AnimationProjectsGrowthWk.html?canvas_width=1800&canvas_height=1000',
-		':time' => 30000,
+		':url' => 'visualizations/growth',
+		':time' => 120000,
 		':weight' => 1,
 	),
 );
