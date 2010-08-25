@@ -50,6 +50,7 @@ th.numeric, td.numeric {
 }
 #displays td a.blank {
 	background-color: white;
+	cursor: default;
 }
 #sites a[target=_blank] {
 	background-image: url(../images/external.png);

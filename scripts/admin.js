@@ -3,6 +3,11 @@ $(document).ready( function() {
 	$( '#tabs li a' ).click( function() {
 		$(this).blur();
 	} );
+	$( '#displays a.blank' ).click( function( e ) {
+		$(this).blur();
+		e.preventDefault();
+		return false;
+	} );
 	$( '#menu button' ).button();
 	$( '#sites input[type=checkbox]' )
 		.each ( function() {
