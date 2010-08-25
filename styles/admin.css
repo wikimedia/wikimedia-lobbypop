@@ -11,6 +11,10 @@ th, td {
 	text-align: left;
 	padding: 0.5em;
 }
+th.numeric, td.numeric {
+	text-align: right;
+	white-space: nowrap;
+}
 #logo {
 	text-align: center;
 }

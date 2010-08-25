@@ -78,10 +78,10 @@ $actions->execute();
 					<thead>
 						<tr>
 							<th>Run</th>
-							<th>URL</th>
-							<th>Time</th>
-							<th>Weight</th>
 							<th>Display</th>
+							<th width="80%">URL</th>
+							<th class="numeric">Time</th>
+							<th class="numeric">Weight</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -92,12 +92,12 @@ $actions->execute();
 									rel="<?php echo $site['rowid'] ?>" <?php echo $site['run'] ? 'checked' : '' ?> />
 								<label for="sites-run-<?php echo $site['rowid'] ?>">Run</label>
 							</td>
+							<td><?php echo $site['display'] ?></td>
 							<td>
 								<a href="<?php echo $site['url'] ?>" target="_blank"><?php echo $site['url'] ?></a>
 							</td>
-							<td><?php echo $site['time'] ?></td>
-							<td><?php echo $site['weight'] ?></td>
-							<td><?php echo $site['display'] ?></td>
+							<td class="numeric"><?php echo $site['time'] / 60000 ?> min</td>
+							<td class="numeric"><?php echo $site['weight'] ?></td>
 						</tr>
 						<?php endwhile; ?>
 					</tbody>

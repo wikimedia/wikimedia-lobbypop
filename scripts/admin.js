@@ -1,5 +1,8 @@
 $(document).ready( function() {
 	$( '#tabs' ).tabs();
+	$( '#tabs li a' ).click( function() {
+		$(this).blur();
+	} );
 	$( '#menu button' ).button();
 	$( '#sites input[type=checkbox]' )
 		.each ( function() {
