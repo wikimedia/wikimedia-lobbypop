@@ -4,7 +4,7 @@ $(document).ready( function() {
 		$( '#overlay' )
 			.fadeIn( 'slow', function() {
 				$.ajax( {
-					'url': 'index.php',
+					'url': 'index.php?timestamp=' + ( new Date() ).getTime(),
 					'data': { 'query': $( '#screen' ).attr( 'rel' ) },
 					'dataType': 'json',
 					'success': function( response ) {
