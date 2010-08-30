@@ -159,7 +159,7 @@ foreach ( array( 'top-left', 'top-right', 'bottom-left', 'bottom-right' ) as $lo
 								<a href="<?php echo $site['url'] ?>" target="_blank"><?php echo $site['url'] ?></a>
 							</td>
 							<td><?php echo $site['display'] ?></td>
-							<td class="numeric"><?php echo $site['time'] / 60000 ?> min</td>
+							<td class="numeric"><?php echo round( $site['time'] / 60000, 2 ) ?> min</td>
 							<td class="numeric"><?php echo $site['weight'] ?></td>
 						</tr>
 						<?php endwhile; ?>
