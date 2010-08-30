@@ -1,8 +1,12 @@
+html {
+	height: 101%;
+}
 body {
 	margin: 0;
 	padding: 1em;
 	font-family: sans-serif;
 	font-size: 0.75em;
+	height: 101%;
 }
 table {
 	width: 100%;
