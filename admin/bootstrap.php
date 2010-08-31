@@ -50,7 +50,7 @@ $sites = array(
 	// Anon-edits for 00:10:00
 	array(
 		':name' => 'WikipediaViz',
-		':url' => 'http://www.lkozma.net/wpv',
+		':url' => 'visualizations/anonedits',
 		':time' => 360000,
 		':weight' => 1,
 	),
