@@ -46,6 +46,7 @@ $sites = array(
 		':url' => 'visualizations/xkcd',
 		':time' => 120000,
 		':weight' => 1,
+		':run' => false,
 	),
 	// Anon-edits for 00:10:00
 	array(
@@ -66,13 +67,6 @@ $sites = array(
 		':name' => 'Growth',
 		':url' => 'visualizations/growth',
 		':time' => 75000,
-		':weight' => 1,
-	),
-	// Live Wikipedia Edits for 00:10:00
-	array(
-		':name' => 'Nodelay',
-		':url' => 'http://nodelay.no.de/',
-		':time' => 360000,
 		':weight' => 1,
 	),
 );
