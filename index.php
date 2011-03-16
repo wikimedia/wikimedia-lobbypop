@@ -4,11 +4,18 @@ if ( isset( $_GET['query'] ) ) {
 	try {
 		$db = new PDO( 'sqlite:data/lobbypop.db' );
 		header( 'Content-type: application/json' );
-		// Return a random site
+		// Try for a random unused one
 		$select = $db->query( 'SELECT sites.rowid, sites.url, sites.time, actions.text FROM sites, actions WHERE sites.run = 1 AND sites.display = "none" ORDER BY RANDOM() LIMIT 1' );
 		$response = $select->fetch( PDO::FETCH_ASSOC );
+		// Just use a random one
+		if ( !$response ) {
+			$select = $db->query( 'SELECT sites.rowid, sites.url, sites.time, actions.text FROM sites, actions WHERE sites.run = 1 ORDER BY RANDOM() LIMIT 1' );
+			$response = $select->fetch( PDO::FETCH_ASSOC );
+		}
+		// Detach previous site from display
 		$update = $db->prepare( 'UPDATE sites SET display = "none" WHERE display = :display' );
 		$update->execute( array( ':display' => $_GET['query'] ) );
+		// Attach new site to display
 		$update = $db->prepare( 'UPDATE sites SET display = :display WHERE rowid = :rowid' );
 		$update->execute( array( ':display' => $_GET['query'], ':rowid' => $response['rowid'] ) );
 		echo json_encode( array_merge( array( 'status' => 'ok' ), $response ) );

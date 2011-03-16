@@ -58,11 +58,12 @@ foreach ( array( 'top-left', 'top-right', 'bottom-left', 'bottom-right' ) as $lo
 	$selectDisplay->execute( array( ':display' => $location ) );
 	$displays[$location] = $selectDisplay->fetch( PDO::FETCH_ASSOC );
 }
+var_dump( $displays );
 ?>
 <!doctype html>
 <html>
 	<head>
-		<base href="http://<?php echo $_SERVER['SERVER_NAME'] . dirname( dirname( $_SERVER['SCRIPT_NAME'] ) ) ?>/" />
+		<base href="http://<?php echo $_SERVER['HTTP_HOST'] . dirname( dirname( $_SERVER['SCRIPT_NAME'] ) ) ?>/" />
 		<title>LobbyPop! Admin</title>
 		<link rel="stylesheet" href="styles/smoothness/jquery-ui-1.8.4.css" />
 		<link rel="stylesheet" href="styles/admin.css" />
