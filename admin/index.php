@@ -58,7 +58,6 @@ foreach ( array( 'top-left', 'top-right', 'bottom-left', 'bottom-right' ) as $lo
 	$selectDisplay->execute( array( ':display' => $location ) );
 	$displays[$location] = $selectDisplay->fetch( PDO::FETCH_ASSOC );
 }
-var_dump( $displays );
 ?>
 <!doctype html>
 <html>
