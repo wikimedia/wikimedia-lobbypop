@@ -1,5 +1,7 @@
 $(document).ready( function() {
+	var loadTimeout, reloadTimeout;
 	function load() {
+		clearTimeout( loadTimeout );
 		// Show overlay and load iframe
 		$( '#overlay' )
 			.fadeIn( 'slow', function() {
@@ -10,21 +12,24 @@ $(document).ready( function() {
 					'success': function( response ) {
 						if ( response.status === 'ok' ) {
 							// Allow 30 seconds to load
-							var timeout = setTimeout( load, 30000 );
+							loadTimeout = setTimeout( load, 30000 );
 							$( '#screen' )
 								.attr( 'src', response.url )
 								.load( function() {
-									clearTimeout( timeout );
+									clearTimeout( loadTimeout );
 									// Hide overlay
 									$( '#overlay' ).fadeOut( 'slow', function() {
 										$( '#label' ).text( response.text );
 									} );
 								} );
 							// Load again after a set time
-							setTimeout( load, response.time );
+							clearTimeout( reloadTimeout );
+							reloadTimeout = setTimeout( load, response.time );
 						} else {
 							// Display error
-							$( '#label' ).text( 'Server error (' + response.message + '), trying again in a bit...' );
+							$( '#label' ).text(
+								'Server error (' + response.message + '), trying again in a bit...'
+							);
 							// Load again after 10 seconds
 							setTimeout( load, 10000 );
 						}
@@ -32,7 +37,8 @@ $(document).ready( function() {
 					'failure': function() {
 						$( '#label' ).text( 'Server not responding, trying again in bit...' );
 						// Load again after 10 seconds
-						setTimeout( load, 10000 );
+						clearTimeout( reloadTimeout );
+						reloadTimeout = setTimeout( load, 10000 );
 					}
 				} );
 			} );
