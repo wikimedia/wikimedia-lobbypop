@@ -1,0 +1,60 @@
+{
+	"sites": {
+		"video": {
+			"url": "visualizations/video",
+			"time": 83000,
+			"run": true
+		},
+		"xkcd": {
+			"url": "visualizations/xkcd",
+			"time": 120000,
+			"run": false
+		},
+		"wikipediaviz": {
+			"url": "visualizations/anonedits",
+			"time": 360000,
+			"run": true
+		},
+		"commons": {
+			"url": "http://toolserver.org/~para/Commons:Special:NewFiles",
+			"time": 360000,
+			"run": true
+		},
+		"growth": {
+			"url": "visualizations/growth",
+			"time": 75000,
+			"run": true
+		}
+	},
+	"messages": [
+		"Connecting you up to the matrix",
+		"Discombobulating your P-dotter",
+		"Tweaking your PRAM and harshing your H-drive",
+		"Reading your mind",
+		"Imagining everyone in the audience in their underwear",
+		"Mowing the lawn",
+		"Waiting for the bus",
+		"Picking noses",
+		"Searching your name in Google",
+		"Eating soft cheese",
+		"Testing the water",
+		"Sticking finger in air",
+		"Listening to railroad tracks",
+		"Saving server kitties",
+		"Emailing sysadmins",
+		"Hunting down, and verbally assaulting, spammers",
+		"Filtering spam",
+		"Ignorning trolls",
+		"Predicting the future",
+		"Editing your wiki",
+		"Selecting new server kittens",
+		"Locating the required gigapixels to render",
+		"Spinning up the hamster",
+		"Shovelling coal into the server",
+		"Programming the flux capacitor",
+		"Commencing infinite loop (this may take some time)",
+		"Downloading all of your interwebs",
+		"Searching for the any key",
+		"I'm not slacking off, my code's compiling"
+	]
+}

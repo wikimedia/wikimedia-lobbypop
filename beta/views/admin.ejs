@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+	<head>
+		<title>LobbyPop! Admin</title>
+		<link rel="stylesheet" href="/public/styles/smoothness/jquery-ui-1.8.11.css" />
+		<link rel="stylesheet" href="/public/styles/admin.css" />
+	</head>
+	<body>
+		<div id="logo"><img src="/public/images/logo.png" border="0" alt="LobbyPop!" title="LobbyPop!" /></div>
+		<div id="tabs">
+			<ul>
+				<li><a href="#displays">Displays</a></li>
+				<li><a href="#sites">Sites</a></li>
+				<li><a href="#actions">Actions</a></li>
+			</ul>
+			<div id="displays" align="center">
+				<table>
+					<tbody>
+						<tr>
+							<td id="display-top-left" width="50%">
+								<a href="#displays" class="blank">
+									<img src="images/loading.gif" border="0" align="absmiddle" />
+								</a>
+							</td>
+							<td id="display-top-right" width="50%">
+								<a href="#displays" class="blank">
+									<img src="images/loading.gif" border="0" align="absmiddle" />
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<td id="display-bottom-left" width="50%">
+								<a href="#displays" class="blank">
+									<img src="images/loading.gif" border="0" align="absmiddle" />
+								</a>
+							</td>
+							<td id="display-bottom-right" width="50%">
+								<a href="#displays" class="blank">
+									<img src="images/loading.gif" border="0" align="absmiddle" />
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div id="sites">
+				<table>
+					<thead>
+						<tr>
+							<th>Run</th>
+							<th>Name</th>
+							<th>URL</th>
+							<th>Display</th>
+							<th class="numeric">Time</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% for ( var name in sites ) { %>
+						<tr>
+							<td>
+								<input type="checkbox" id="sites-run-<%= name %>"
+									rel="<%= name %>" <%= sites[name].run ? 'checked' : '' %> />
+								<label for="sites-run-<%= name %>">Run</label>
+							</td>
+							<td><%= name %></td>
+							<td>
+								<a href="<%= sites[name].url %>" target="_blank"><%= sites[name].url %></a>
+							</td>
+							<td><%= sites[name].display %></td>
+							<td class="numeric"><%= Math.round( sites[name].time / 1000 ) %> sec</td>
+						</tr>
+						<% } %>
+					</tbody>
+				</table>
+			</div>
+			<div id="actions">
+				<table>
+					<thead>
+						<th>Text</th>
+					</thead>
+					<tbody>
+						<% for ( var i = 0; i < messages.length; i++ ) { %>
+						<tr>
+							<td><%= messages[i] %></td>
+						</tr>
+						<% } %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<script type="text/javascript" src="/public/scripts/jquery-1.5.1.min.js"></script>
+		<script type="text/javascript" src="/public/scripts/jquery-ui-1.8.11.min.js"></script>
+		<script type="text/javascript" src="/public/scripts/admin.js"></script>
+	</body>
+</html>
