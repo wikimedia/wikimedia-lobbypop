@@ -1,17 +1,17 @@
 {
 	"sites": {
 		"video": {
-			"url": "visualizations/video",
+			"url": "/visualizations/video/",
 			"time": 83000,
 			"run": true
 		},
 		"xkcd": {
-			"url": "visualizations/xkcd",
+			"url": "/visualizations/xkcd/",
 			"time": 120000,
 			"run": false
 		},
-		"wikipediaviz": {
-			"url": "visualizations/anonedits",
+		"anonedits": {
+			"url": "/visualizations/anonedits/",
 			"time": 360000,
 			"run": true
 		},
@@ -21,7 +21,7 @@
 			"run": true
 		},
 		"growth": {
-			"url": "visualizations/growth",
+			"url": "/visualizations/growth/",
 			"time": 75000,
 			"run": true
 		}

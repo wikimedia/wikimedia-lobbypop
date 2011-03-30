@@ -8,6 +8,7 @@ app
 	.configure( function() {
 		app
 			.use( '/public', express.static( __dirname + '/public' ) )
+			.use( '/visualizations', express.static( __dirname + '/visualizations' ) )
 			.use( express.errorHandler( { dumpExceptions: true, showStack: true } ) )
 			.use( express.bodyParser() )
 			.set( 'view engine', 'ejs' );
@@ -38,7 +39,9 @@ app
 		res.contentType( 'json' );
 		var siteArray = [];
 		for ( var name in config.sites ) {
-			siteArray.push( config.sites[name] );
+			if ( config.sites[name].run ) {
+				siteArray.push( config.sites[name] );
+			}
 		}
 		var site = siteArray[Math.round( Math.random() * ( siteArray.length - 1 ) )];
 		var text = config.messages[Math.round( Math.random() * ( config.messages.length - 1 ) )];
