@@ -53,6 +53,7 @@
 		<script src="../../scripts/jquery.jfeed.pack.js"></script>
 		<script>
 			$.getFeed( {
+				// This seems to be broken
 				'url': 'http://xkcd.com/rss.xml',
 				'success': function( feed ) {
 					var item = feed.items[Math.round( Math.random() * ( feed.items.length - 1 ) )];
