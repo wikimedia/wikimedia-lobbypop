@@ -19,6 +19,13 @@ th.numeric, td.numeric {
 	text-align: right;
 	white-space: nowrap;
 }
+input.changed {
+	color: red;
+}
+.sites-time-input {
+	width: 4em;
+	margin-right: 0.5em;
+}
 #logo {
 	text-align: center;
 }
