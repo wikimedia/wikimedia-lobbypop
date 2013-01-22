@@ -2,7 +2,7 @@ var lpa = {
 	'sites': function() {
 		$.ajax( {
 			'type': 'GET',
-			'url': 'sites',
+			'url': '/admin/sites',
 			'dataType': 'json',
 			'context': $( '#sites' ),
 			'success': function( response ) {
@@ -62,7 +62,7 @@ var lpa = {
 									value = $this.val();
 									$.ajax( {
 										'type': 'POST',
-										'url': 'sites',
+										'url': '/admin/sites',
 										'data': {
 											'action': 'time',
 											'time': value,
@@ -98,7 +98,7 @@ var lpa = {
 						var value = $(this).is( ':checked' );
 						$.ajax( {
 							'type': 'POST',
-							'url': 'sites',
+							'url': '/admin/sites',
 							'data': {
 								'action': 'run',
 								'run': value,
