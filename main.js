@@ -1,6 +1,6 @@
 var express = require( 'express' ),
 	fs = require( 'fs' ),
-	app = express.createServer();
+	app = express();
 
 var config = JSON.parse( fs.readFileSync( 'config.json' ) );
 
@@ -13,10 +13,10 @@ app.configure( function() {
 		.set( 'view engine', 'ejs' );
 } );
 app.get( '/', function( req, res ) {
-    res.partial( 'setup' );
+    res.render( 'setup' );
 } );
 app.get( '/admin', function( req, res ) {
-    res.partial( 'admin', { 'locals': config } );
+    res.render( 'admin', { 'locals': config } );
 } );
 app.get( '/admin/sites', function( req, res ) {
 	res.send( JSON.stringify( config.sites ) );
@@ -61,9 +61,9 @@ app.get( '/display/random', function( req, res ) {
 	} ) );
 } );
 app.get( '/display/:frameset', function( req, res ) {
-    res.partial( 'frameset', { 'locals': req.params } );
+    res.render( 'frameset', { 'locals': req.params } );
 } );
 app.get( '/display/:frameset/:display', function( req, res ) {
-    res.partial( 'display', { 'locals': req.params } );
+    res.render( 'display', { 'locals': req.params } );
 } );
 app.listen( 8124 );
