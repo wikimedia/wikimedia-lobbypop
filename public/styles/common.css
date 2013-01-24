@@ -1,0 +1,10 @@
+.brand {
+	background-image: url(../images/logo.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	height: 150px;
+}
+
+.brand-text {
+	display: none;
+}
